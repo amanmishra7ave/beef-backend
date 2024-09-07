@@ -1,5 +1,6 @@
 const movieService = require('../services/movieService')
 
+
 exports.getAllMovies=async(req,res)=>{
   try{
     const movies = await movieService.getAllMovies();

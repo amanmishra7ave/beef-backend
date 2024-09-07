@@ -1,4 +1,7 @@
 const Movie = require('../models/Movie');
+const { authSchema } =require('../models/auth.models')
+const Joi=require('joi');
+const bcrypt=require('bcrypt');
 
 exports.getAllMovies=async()=>{
     return await Movie.find();
@@ -19,3 +22,18 @@ exports.addRoast=async(id,roast)=>{
     movie.roasts.push(roast);
     return await movie.save();    
 };
+
+
+exports.validateUser = (data) => {
+    const schema = Joi.object({
+        name: Joi.string().min(3).required(),
+        password: Joi.string().min(6).required(),
+        confirmPassword: Joi.any().valid(Joi.ref('password')).required().messages({
+            'any.only': 'Passwords do not match',
+        }),
+    });
+    return schema.validate(data);
+};
+
+// module.exports=validateUser;
+// User registration function

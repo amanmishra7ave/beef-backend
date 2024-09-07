@@ -2,7 +2,7 @@ const express=require('express');
 const cors=require('cors');
 const helmet=require('helmet');
 const connectDB=require('./config/database');
-const movieRoutes=require('./routes/movieRoutes');
+const movieRoutes=require('./routes/movieRoutes.routes');
 
 const app=express();
 
