@@ -9,7 +9,7 @@ const userSchema = Joi.object({
         'any.only': 'Passwords do not match',
     }),
 });
-
+   
 const loginSchema = Joi.object({
     name: Joi.string().min(3).required(),
     password: Joi.string().min(6).required(),
